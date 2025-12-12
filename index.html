@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spa de Mascotas</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="section">
+    <h2>Inicio de Sesión</h2>
+    <form id="form-login">
+        <input type="text" id="user" placeholder="Usuario" required>
+        <input type="password" id="pass" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+    </form>
+</section>
+
+<!-- NAVBAR -->
+<nav id="nav" class="hidden">
+    <button onclick="mostrar('inicio')">Inicio</button>
+    <button onclick="mostrar('registro')">Registro</button>
+    <button onclick="mostrar('agenda')">Agenda</button>
+    <button onclick="mostrar('compras')">Compras</button>
+    <button onclick="cerrarSesion()">Cerrar Sesión</button>
+</nav>
+
+<section id="inicio" class="section hidden">
+
+    <!-- BANNER PRINCIPAL / IMAGEN GRANDE -->
+    <!-- CAMBIA ESTA IMAGEN A TU GUSTO -->
+    <div class="hero">
+        <img src="./imagenes/banner.png" alt="Spa de Mascotas">
+        <!-- ↑ Aquí va tu imagen principal -->
+        <div class="hero-text">
+            <h1>Bienvenido al Spa de Mascotas</h1>
+            <p>El mejor cuidado para tus mascotas con amor y dedicación.</p>
+
+            
+        </div>
+    </div>
+
+    <!-- TARJETAS INFORMATIVAS -->
+    <div class="info-cards">
+
+        <div class="info-card">
+            <img src="./imagenes/cuidado.png" alt="Cuidado">
+            <!-- cambia esta imagen -->
+            <h3>Cuidado Profesional</h3>
+            <p>Personal capacitado para el bienestar de tu mascota.</p>
+        </div>
+
+        <div class="info-card">
+            <img src="./imagenes/baño.png" alt="Baño">
+            <h3>Servicios Completos</h3>
+            <p>Baño, peluquería, uñas, vacunación y más.</p>
+        </div>
+
+        <div class="info-card">
+            <img src="./imagenes/amor.png" alt="Amor">
+            <h3>Amor y Atención</h3>
+            <p>Tratamos a cada mascota como parte de nuestra familia.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTRO -->
+<section id="registro" class="section hidden">
+    <h2>Registro de Dueño</h2>
+
+    <form id="form-dueno">
+        <input type="text" id="d_nombre" placeholder="Nombre" required>
+        <input type="tel" id="d_tel" placeholder="Teléfono" required>
+        <input type="email" id="d_correo" placeholder="Correo" required>
+        <button type="submit">Guardar Dueño</button>
+    </form>
+
+    <h3>Dueños Registrados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Teléfono</th><th>Correo</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-duenos"></tbody>
+    </table>
+
+    <hr><br>
+
+    <h2>Registro de Mascota</h2>
+
+    <form id="form-mascota" enctype="multipart/form-data">
+        <input type="text" id="m_nombre" placeholder="Nombre" required>
+        <input type="text" id="m_especie" placeholder="Especie" required>
+        <input type="text" id="m_raza" placeholder="Raza" required>
+
+        <!-- SUBIR FOTO DE MASCOTA -->
+        <!-- Aquí colocas la imagen que el usuario sube -->
+        <input type="file" id="m_foto" accept="image/*">
+
+        <button type="submit">Guardar Mascota</button>
+    </form>
+
+    <h3>Mascotas Registradas</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th><th>Nombre</th><th>Especie</th><th>Raza</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-mascotas"></tbody>
+    </table>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda" class="section hidden">
+    <h2>Agendar Servicio</h2>
+
+    <form id="form-agenda">
+        <input type="date" id="a_fecha" required>
+        <input type="time" id="a_hora" required>
+        <input type="text" id="a_mascota" placeholder="Mascota" required>
+
+        <select id="a_servicio">
+            <option>Baño</option>
+            <option>Peluquería</option>
+            <option>Corte de Uñas</option>
+            <option>Vacunación</option>
+        </select>
+
+        <button type="submit">Guardar Cita</button>
+    </form>
+
+    <h3>Citas Registradas</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th><th>Fecha</th><th>Hora</th><th>Mascota</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-agenda"></tbody>
+    </table>
+</section>
+
+<!-- CATÁLOGO + CARRITO -->
+<section id="compras" class="section hidden">
+    <h2>Catálogo de Servicios y Productos</h2>
+
+    <div id="catalogo" class="catalogo"></div>
+
+    <h2>Carrito de Compras</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th><th>Precio</th><th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="lista-carrito"></tbody>
+    </table>
+
+    <h3>Total: <span id="total">0</span> Bs</h3>
+
+    <button class="btn-confirmar" onclick="confirmarCompra()">Confirmar Compra</button>
+</section>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
